@@ -57,9 +57,9 @@ minikube addons enable heapster
 minikube addons enable ingress
 
 # Wait for the dashboard to be ready.
-echo -e -n "${C_GREEN}Waiting for the dashboard to be ready...${C_RESET_ALL}"
-until minikube service -n kube-system kubernetes-dashboard >/dev/null 2>&1; do
-  echo -e -n "${C_GREEN}.${C_RESET_ALL}"
-  sleep 1
-done
-echo
+# echo -e -n "${C_GREEN}Waiting for the dashboard to be ready...${C_RESET_ALL}"
+# until minikube service -n kube-system kubernetes-dashboard >/dev/null 2>&1; do
+#   echo -e -n "${C_GREEN}.${C_RESET_ALL}"
+#   sleep 1
+# done
+# echo
