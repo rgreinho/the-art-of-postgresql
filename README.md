@@ -26,4 +26,5 @@ source venv/bin/activate
 
 ```bash
 eval $(./setup/pgsql-connect.sh)
+./setup/pgsql-connect.sh
 ```
