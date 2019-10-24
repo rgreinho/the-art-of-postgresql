@@ -28,21 +28,23 @@ def setup(c):
 @task
 def mrd(c):
     """Setup the Motor Race Database."""
-    db_archive = f1db_postgres.sql.gz
+    db_archive = "f1db_postgres.sql.gz"
     # hostname = os.environ["PGHOST"]
     # port = os.environ["PGPORT"]
-    # username = "postgres"
-    # password = "postgres"
+    # username = os.environ["PGUSER"]
+    # password = os.environ["PGPASSWORD"]
     dbname = "f1db"
-    c.run("create {dbname}")
+    c.run(f"createdb {dbname}", warn=True)
+    p = Path(".tmp")
+    p.mkdir(exist_ok=True)
     with c.cd(".tmp"):
         c.run(f"curl -sLO http://ergast.com/downloads/{db_archive}")
-        c.run(f"gzip -d {db_archive}")
+        c.run(f"gzip -d {db_archive}", warn=True)
         c.run(
             "curl -sLO https://raw.githubusercontent.com/lanyrd/mysql-postgresql-converter/master/db_converter.py"
         )
-        c.run("python2 db_converter.py f1db_postgres.sql f1db.psql")
-        c.run("psql f1db < f1db.psql")
+        c.run(f"python2 db_converter.py f1db_postgres.sql {dbname}.psql")
+        c.run(f"psql {dbname} < {dbname}.psql")
 
 
 def get_venv(venv):
