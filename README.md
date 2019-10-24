@@ -2,6 +2,14 @@
 
 ## Setup
 
+You need to have [invoke](https://docs.pyinvoke.org/en/1.3/) installed in order to run the tasks.
+
+```bash
+pip install invoke
+```
+
+Prepare the environment with:
+
 ```bash
 inv
 ```
