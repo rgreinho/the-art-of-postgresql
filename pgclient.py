@@ -5,8 +5,8 @@ import os
 import aiopg
 import rapidtables
 
-hostname = os.environ["NODE_IP"]
-port = os.environ["NODE_PORT"]
+hostname = os.environ["PGHOST"]
+port = os.environ["PGPORT"]
 dsn = f"dbname=postgres user=postgres password=postgres host={hostname} port={port}"
 
 

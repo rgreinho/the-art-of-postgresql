@@ -1,4 +1,5 @@
 aiopg[sa]
 asyncpg
+mycli
 pgcli
 rapidtables
